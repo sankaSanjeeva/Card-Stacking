@@ -5,14 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stacking Cards</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+      @layer base {
+        :root {
+          --card-offset: 20px;
+          /* default index of a card */
+          --card-index: 1;
+        }
+      }
+
+      @layer components {
+        .card {
+          @apply h-64 rounded-xl sticky top-[calc(var(--card-offset)_*_var(--card-index))];
+        }
+      }
+    </style>
   </head>
+
   <body class="bg-gray-900">
     <div class="m-20 p-20 rounded-2xl bg-gray-800">
       <div class="flex flex-col gap-4 relative">
-        <div class="h-60 rounded-xl sticky top-[20px] bg-green-600"></div>
-        <div class="h-60 rounded-xl sticky top-[40px] bg-green-500"></div>
-        <div class="h-60 rounded-xl sticky top-[60px] bg-green-400"></div>
-        <div class="h-60 rounded-xl sticky top-[80px] bg-green-300"></div>
+        <div style="--card-index: 1" class="card bg-green-600"></div>
+        <div style="--card-index: 2" class="card bg-green-500"></div>
+        <div style="--card-index: 3" class="card bg-green-400"></div>
+        <div style="--card-index: 4" class="card bg-green-300"></div>
 
         <div class="h-screen"></div>
       </div>
